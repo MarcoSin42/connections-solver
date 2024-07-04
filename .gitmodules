@@ -1,0 +1,3 @@
+[submodule "NYT-Connections-Answers"]
+	path = NYT-Connections-Answers
+	url = https://github.com/Eyefyre/NYT-Connections-Answers/tree/main
