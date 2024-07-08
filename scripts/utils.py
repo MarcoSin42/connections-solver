@@ -2,18 +2,20 @@ import numpy as np
 from numpy.typing import ArrayLike
 from itertools import permutations
 from sklearn.metrics import accuracy_score
+import warnings
 
 # Helper function to apply the permutation
 def apply_perm(perm: ArrayLike):
     """Applys a permutation to some element
 
     Args:
-        perm (ArrayLike): _description_
+        perm (ArrayLike): The permutation map.  Permute indexes perm to apply the permutation for each element
     """
     def permute(i:int):
         try:
             return perm[i]
         except:
+            warnings.warn(f"Attempted to permute {i}, but {i} was not found in the permutation map.  The default behaviour is to return the unpermuted element.")
             return i
         
     return permute
@@ -55,7 +57,7 @@ def permute_to_minimize_cmatrix(predicted: ArrayLike,
 
 if __name__ == '__main__':
     
-    test = [0,1,2,3]
+    test = [0,1,2,3,4]
     perm = [3,2,1,0]
     testperm = apply_perm(perm)
     vperm = np.vectorize(testperm)
