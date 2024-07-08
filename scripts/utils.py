@@ -4,7 +4,7 @@ from itertools import permutations
 from sklearn.metrics import accuracy_score
 import warnings
 
-# Helper function to apply the permutation
+# An actual situation where currying is warranted. 
 def apply_perm(perm: ArrayLike):
     """Applys a permutation to some element
 
@@ -15,7 +15,8 @@ def apply_perm(perm: ArrayLike):
         try:
             return perm[i]
         except:
-            warnings.warn(f"Attempted to permute {i}, but {i} was not found in the permutation map.  The default behaviour is to return the unpermuted element.")
+            warnstr = f'Attempted to permute {i}, but {i} was not found in the permutation map.  The default behaviour is to return the unpermuted element.'
+            warnings.warn(warnstr)
             return i
         
     return permute
