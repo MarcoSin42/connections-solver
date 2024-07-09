@@ -37,7 +37,7 @@ def permute_to_minimize_cmatrix(predicted: ArrayLike,
     
     returns: The best possible confusion matrix
     """
-    best_perm:tuple = (1,2,3,4)
+    best_perm:tuple = (0,1,2,3)
     best_score:int = accuracy_score(actual, predicted)
     
     # For KMeans, 0 is a fixed point ¯\_(ツ)_/¯ 
@@ -64,7 +64,10 @@ def permute_to_minimize_cmatrix(predicted: ArrayLike,
                 best_score = candidate_score
                 best_perm = perm
     
-    return best_perm 
+    permute = np.vectorize(apply_perm(best_perm))
+    permuted_predicted = permute(predicted)
+    
+    return best_perm, permuted_predicted
 
 
 if __name__ == '__main__':
