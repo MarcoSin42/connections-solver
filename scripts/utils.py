@@ -41,19 +41,30 @@ def permute_to_minimize_cmatrix(predicted: ArrayLike,
     best_score:int = accuracy_score(actual, predicted)
     
     # For KMeans, 0 is a fixed point ¯\_(ツ)_/¯ 
-    permutations = [
-        (0, 1, 3, 2),
-        (0, 2, 1, 3),
-        (0, 2, 3, 1),
-        (0, 3, 1, 2),
-        (0, 3, 2, 1),
-    ]
+    permutations = np.array([
+        [0, 1, 3, 2],
+        [0, 2, 1, 3],
+        [0, 2, 3, 1],
+        [0, 3, 1, 2],
+        [0, 3, 2, 1],
+    ])
+    
     
 
     
     if actual_label_sequential:
         for perm in permutations:
-            return
+            
+            permute = np.vectorize(apply_perm(perm))
+            permuted_predicted = permute(predicted)
+            
+            candidate_score = accuracy_score(actual, permuted_predicted)
+            
+            if best_score < candidate_score:
+                best_score = candidate_score
+                best_perm = perm
+    
+    return best_perm 
 
 
 if __name__ == '__main__':
@@ -67,6 +78,14 @@ if __name__ == '__main__':
     
     print(vperm(test))
     
+    
+    predicted = sum([[i]*4 for i in range(4)], [])
+    actual = sum([[i]*4 for i in [0,3,1,2]], [])
+    
+    print(permute_to_minimize_cmatrix(predicted, actual))
+    
+    print(predicted)
+    print(actual)    
     print("test")
     
     
