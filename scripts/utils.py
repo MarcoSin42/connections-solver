@@ -87,6 +87,15 @@ def permute_to_minimize_cmatrix(predicted: ArrayLike,
     return best_perm, permuted_predicted
 
 def get_vectors(words: list[str], model):
+    """Given a Word embedding model and a list of words, return a numpy array consisting of the word vectors
+
+    Args:
+        words (list[str]): List of words
+        model (_type_): Our vector embedding model, typically Google's Word2Vec
+
+    Returns:
+        np.array: A list of vector embeddings if the word is contained within the model, else, return None.
+    """
     try:
         lst_of_vecs = []
         for word in words:
