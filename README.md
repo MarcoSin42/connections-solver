@@ -1,6 +1,6 @@
 # Introduction
 
-Connections is New York Times game where you are given 16 words.  Your goal is to group 4 words which have something in common, you do this 4 times since you have 16 words.
+Connections is New York Times game where you are given 16 words.  Your goal is to group 4 words which have something in common, you do this 4 times since you have 16 words.  This program is an attempt to solve it aswell as presenting data to prove the validity of this model.
 
 You can play [Connections here.](https://www.nytimes.com/games/connections)
 
@@ -12,3 +12,12 @@ I am using word embeddings to solve this, specifically Google's pretrained [Word
 Some Google software developer makes the interesting observation that word vectors capture semantic similarity.  This is useful for solving our problem since the name of the game is group words with similiar meanings.
 
 
+# More about NYT Connections
+
+To understand why the model performs poorly on some words and better on others, we must first explain the game a bit more thoroughly.
+
+The game has four levels of difficulty contained per game.  With increasing difficulties the association between words become more loose.  For example, for the level 0 group we may have a group of fruits like: banana, apple, orange, mango.  And for more difficult levels, for example, level 4, we'd have more loose associations such as the group "Letter Homophones" of which its members are: 'are', 'queue', 'sea', and 'why.'
+
+# The Data
+
+![plot][./images/Validation_plot.png]
