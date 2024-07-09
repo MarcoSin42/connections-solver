@@ -20,4 +20,9 @@ The game has four levels of difficulty contained per game.  With increasing diff
 
 # The Data
 
-![plot][./images/Validation_plot.png]
+![plot](https://raw.githubusercontent.com/MarcoSin42/connections-solver/main/images/Validation_plot.png)
+
+
+# Analysis and conclusion
+
+As can be seen in the above plot, the model performs relatively well on the easier levels and performs more poorly on the more difficult levels.  This could be due to model chosen Word2Vec being trained on news articles as opposed to poetry or a more creative writing corpus, this is because news articles are meant to be interpretted more literally whereas the higher difficulty levels are increasingly abstract.  An improvement could be made by using a different model trained on more creative works.  
