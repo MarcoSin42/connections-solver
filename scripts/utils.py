@@ -41,13 +41,30 @@ def permute_to_minimize_cmatrix(predicted: ArrayLike,
     best_score:int = accuracy_score(actual, predicted)
     
     # For KMeans, 0 is a fixed point ¯\_(ツ)_/¯ 
-    permutations = np.array([
-        [0, 1, 3, 2],
-        [0, 2, 1, 3],
-        [0, 2, 3, 1],
-        [0, 3, 1, 2],
-        [0, 3, 2, 1],
-    ])
+    permutations = np.array([(0, 1, 2, 3),
+        (0, 1, 3, 2),
+        (0, 2, 1, 3),
+        (0, 2, 3, 1),
+        (0, 3, 1, 2),
+        (0, 3, 2, 1),
+        (1, 0, 2, 3),
+        (1, 0, 3, 2),
+        (1, 2, 0, 3),
+        (1, 2, 3, 0),
+        (1, 3, 0, 2),
+        (1, 3, 2, 0),
+        (2, 0, 1, 3),
+        (2, 0, 3, 1),
+        (2, 1, 0, 3),
+        (2, 1, 3, 0),
+        (2, 3, 0, 1),
+        (2, 3, 1, 0),
+        (3, 0, 1, 2),
+        (3, 0, 2, 1),
+        (3, 1, 0, 2),
+        (3, 1, 2, 0),
+        (3, 2, 0, 1),
+        (3, 2, 1, 0)])
     
     
 
@@ -69,6 +86,15 @@ def permute_to_minimize_cmatrix(predicted: ArrayLike,
     
     return best_perm, permuted_predicted
 
+def get_vectors(words: list[str], model):
+    try:
+        lst_of_vecs = []
+        for word in words:
+            lst_of_vecs.append(model.get_vector(word, norm=True))
+        return np.array(lst_of_vecs)
+    except:
+        return None
+
 
 if __name__ == '__main__':
     
@@ -82,10 +108,12 @@ if __name__ == '__main__':
     print(vperm(test))
     
     
-    predicted = sum([[i]*4 for i in range(4)], [])
-    actual = sum([[i]*4 for i in [0,3,1,2]], [])
+    actual = sum([[i]*4 for i in range(4)], [])
+    predicted = sum([[i]*4 for i in [0,3,1,2]], [])
     
-    print(permute_to_minimize_cmatrix(predicted, actual))
+    
+    score, permuted_predicted = permute_to_minimize_cmatrix(predicted, actual)
+    assert(np.array(actual).all() == permuted_predicted.all())
     
     print(predicted)
     print(actual)    
