@@ -1,3 +1,4 @@
 .jupyter_ystore.db
 .ipynb_checkpoints
 .jupyter_ystore.db-journal
+__pycache__
