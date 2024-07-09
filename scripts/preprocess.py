@@ -20,5 +20,4 @@ def parse_json(fname:str="../NYT-Connections-Answers/connections.json"):
 
 
 if __name__ == "main":
-    load_json()
-    
+    pass
