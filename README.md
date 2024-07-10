@@ -38,3 +38,7 @@ Some key assumptions when interpretting the confusion matrix** Since KMeans can 
 # Analysis and conclusion
 
 As can be seen in the above plot, the model performs relatively well on the easier levels and performs more poorly on the more difficult levels.  This could be due to model chosen Word2Vec being trained on news articles as opposed to poetry or a more creative writing corpus, this is because news articles are meant to be interpretted more literally whereas the higher difficulty levels are increasingly abstract.  An improvement could be made by using a different model trained on more creative works.  
+
+# How good is it **actually?**
+
+Pretty bad.  I'd say it's good to use to seed your answers and not much more beyond that, I wouldn't trust it blindly.  I'd apply a more Bayesian mindset, by which I mean, if this tool categorizes a couple words together there is a higher likelihood that these 4 words are actually the answers.  Similarly, if two words are placed in different categories I'd think that these two words are probably not in the same group.  
