@@ -4,6 +4,16 @@ Connections is New York Times game where you are given 16 words.  Your goal is t
 
 You can play [Connections here.](https://www.nytimes.com/games/connections)
 
+# Usage
+Use the solver script contained within the scripts file directory like so:
+
+    python solver.py <Path to file containing 16 connections words> 
+
+For example if you navigated to the scripts directory:
+
+    python solver.py ../example
+
+**Warning**: the model does not handle words contained outside of its dataset.
 
 # How am I solving it?
 
