@@ -86,7 +86,7 @@ def permute_to_minimize_cmatrix(predicted: ArrayLike,
     
     return best_perm, permuted_predicted
 
-def get_vectors(words: list[str], model):
+def get_vectors(words: list[str], model) -> ArrayLike:
     """Given a Word embedding model and a list of words, return a numpy array consisting of the word vectors
 
     Args:
