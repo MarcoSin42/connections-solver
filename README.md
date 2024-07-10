@@ -28,7 +28,9 @@ To understand why the model performs poorly on some words and better on others, 
 
 The game has four levels of difficulty contained per game.  With increasing difficulties the association between words become more loose.  For example, for the level 0 group we may have a group of fruits like: banana, apple, orange, mango.  And for more difficult levels, for example, level 4, we'd have more loose associations such as the group "Letter Homophones" of which its members are: 'are', 'queue', 'sea', and 'why.'
 
-# The Data
+# Validating the model
+
+Some key assumptions when interpretting the confusion matrix** Since KMeans can on occasion mislabel some things, for example it may label alls 1s as 2s and vice versa, as a result, my algorithm does some permutations such that it maximizes the accuracy score.  What matters isn't the mislabeling, but rather elements are grouped together correctly.  
 
 ![plot](https://raw.githubusercontent.com/MarcoSin42/connections-solver/main/images/Validation_plot.png)
 
